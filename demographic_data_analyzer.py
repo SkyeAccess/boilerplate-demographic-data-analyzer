@@ -9,7 +9,7 @@ def calculate_demographic_data(print_data=True):
     race_count = df['race'].value_counts()
 
     # What is the average age of men?
-    average_age_men = round(df[df['sex'] == 'Male']['age'].mean(), 1) 
+    average_age_men = round(df[df['sex'] == 'Male']['age'].mean(), 1)  
 
     # What is the percentage of people who have a Bachelor's degree?
     percentage_bachelors = round((df['education'] == 'Bachelors').mean() * 100, 1)
@@ -32,10 +32,11 @@ def calculate_demographic_data(print_data=True):
     num_min_workers = df[df['hours-per-week'] == min_work_hours] 
 
     rich_percentage = round((num_min_workers['salary'] == '>50K').mean() * 100, 1)
+ 
 
     # What country has the highest percentage of people that earn >50K?
     highest_earning_country = (df[df['salary'] == '>50K'].groupby('native-country').size() / 
-                               df.groupby('native-country').size()).idxmax()
+                               df.groupby('native-country').size()).idxmax()   
     highest_earning_country_percentage = round(((df[df['salary'] == '>50K'].groupby('native-country').size() / 
                                                  df.groupby('native-country').size()).max() * 100), 1)
 
